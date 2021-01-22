@@ -11,5 +11,6 @@ class CustomColors{
   static const Color darkGrey = Color(0xFF222222);
   static const Color black = Color(0xFF141414);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color pearlWhite = const Color(0xffffffff);
 
 }

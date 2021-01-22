@@ -8,7 +8,7 @@ void main() {
     theme: ThemeData(
       primaryColor: CustomColors.deepOrange,
       accentColor: CustomColors.cyan,
-      fontFamily: 'English'
+      fontFamily: 'Cambria'
     ),
     debugShowCheckedModeBanner: false,
     routes: {

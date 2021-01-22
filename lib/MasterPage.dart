@@ -43,10 +43,14 @@ class _MasterPageState extends State<MasterPage>
           physics: NeverScrollableScrollPhysics(),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          selectedItemColor: CustomColors.deepOrange,
+          selectedItemColor: Theme.of(context).primaryColor,
+          elevation: 4.0,
           selectedIconTheme: CustomTheme.deepTheme,
+          showUnselectedLabels: false,
+          showSelectedLabels: true,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home,
@@ -72,7 +76,7 @@ class _MasterPageState extends State<MasterPage>
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.people,color: Colors.grey,),
-                label: 'Profile'
+                label: 'Settings'
             ),
           ],
         ),
