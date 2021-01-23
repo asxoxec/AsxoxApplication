@@ -1,11 +1,9 @@
 
-import 'package:asxox/network/ApiServices.dart';
 import 'package:asxox/theme/colors.dart';
-import 'package:asxox/widgets/CustomAppBar.dart';
-import 'package:asxox/widgets/TitleText.dart';
+import 'package:asxox/widgets/ProductWidget.dart';
+import 'package:asxox/widgets/TitleRow.dart';
 import 'package:asxox/widgets/carousel.dart';
-import 'package:badges/badges.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,15 +42,35 @@ class _HomePageState extends State<HomePage> {
     _initialLoadData();
   }
 
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+        context: context,
+        builder: (context) => new AlertDialog(
+          title: Text('Are you sure?'),
+          content: Text('Do you want to exit an App'),
+          actions: [
+            FlatButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text('No'),
+            ),
+            FlatButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text('Yes'),
+            )
+          ],
+        ))) ??
+        false;
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.blueGrey[800])
     );
     var screenSize = MediaQuery.of(context).size;
-    return SafeArea(
+    return WillPopScope(
+      onWillPop: _onWillPop,
       child: Material(
-        color: CustomColors.pearlWhite,
         child: CustomScrollView(
           slivers: [
             SliverPersistentHeader(
@@ -61,18 +79,14 @@ class _HomePageState extends State<HomePage> {
             ),
             SliverToBoxAdapter(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CarouselSlides(),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     TitleText('Category'),
-                  //   ],
-                  // ),
+                  TitleRow(title: 'Category',tag: 'allCategory',),
                   Container(
                     width: screenSize.width,
                     height: 50.0,
-                    margin: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
                     padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(9.0),
@@ -111,19 +125,52 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         })
+                  ),
+                  TitleRow(title: "Discount Products",tag: "discount",),
+                  Container(
+                    height: screenSize.height * 0.25,
+                    margin: EdgeInsets.only(left: 20.0),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index){
+                          return ProductWidget(image: 'toDelete.png',);
+                        }),
+                  ),
+                  TitleRow(title: "Home Decoration",tag: "homeDecoration",),
+                  Container(
+                    height: screenSize.height * 0.25,
+                    margin: EdgeInsets.only(left: 20.0),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index){
+                          return ProductWidget(image: 'toDelete2.png',);
+                        }),
+                  ),
+                  TitleRow(title: "Featured Products",tag: "features",),
+                  Container(
+                    height: screenSize.height * 0.25,
+                    margin: EdgeInsets.only(left: 20.0),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index){
+                          return ProductWidget(image: 'toDelete3.png',);
+                        }),
                   )
                 ],
               ),
             ),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-                        (_, index) => ListTile(
-                      title: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Text("Index: $index"),
-                      ),
-                    )
-                ))
+            // SliverList(
+            //     delegate: SliverChildBuilderDelegate(
+            //             (_, index) => ListTile(
+            //           title: Padding(
+            //             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            //             child: Text("Index: $index"),
+            //           ),
+            //         )
+            //     )),
           ],
         ),
       ),

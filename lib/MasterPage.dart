@@ -49,33 +49,49 @@ class _MasterPageState extends State<MasterPage>
           selectedItemColor: Theme.of(context).primaryColor,
           elevation: 4.0,
           selectedIconTheme: CustomTheme.deepTheme,
-          showUnselectedLabels: false,
+          showUnselectedLabels: true,
           showSelectedLabels: true,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home,
-                  color: Colors.grey,),
-                label: 'Home',
+              icon: Icon(Icons.home_outlined,),
+              label: 'Home',
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.category,color: Colors.grey,),
+                icon: Icon(Icons.category_outlined),
                 label: 'Category'
             ),
             BottomNavigationBarItem(
-                icon: Badge(
-                  position: BadgePosition.topEnd(top: 5, end: 5),
-                  badgeColor: CustomColors.deepOrange,
-                  badgeContent: Text(
-                    '9',style: TextStyle(color: CustomColors.white),
-                  ),
-                  child: IconButton(
-                    icon: Icon(Icons.shopping_cart),
-                  ),
+                icon: Stack(
+                  children: [
+                    Icon(Icons.shopping_cart_outlined),
+                    Positioned(
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.circular(6)
+                        ),
+                        constraints: BoxConstraints(
+                          minWidth: 12,
+                          minHeight: 12
+                        ),
+                        child: Text(
+                          '7',
+                          style: TextStyle(
+                            color: CustomColors.white,
+                            fontSize: 10
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                label: 'Cart'
+              label: 'Cart'
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.people,color: Colors.grey,),
+                icon: Icon(Icons.people_outline),
                 label: 'Settings'
             ),
           ],

@@ -12,5 +12,7 @@ class CustomColors{
   static const Color black = Color(0xFF141414);
   static const Color white = Color(0xFFFFFFFF);
   static const Color pearlWhite = const Color(0xffffffff);
+  static const Color secondTextColor = const Color(0xff656565);
+  static const Color dark = const Color(0x12000000);
 
 }
