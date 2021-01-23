@@ -1,7 +1,9 @@
 
 
+import 'package:asxox/Screen/UserLogin.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
 import 'package:flutter/material.dart';
+
 
 class Settings extends StatefulWidget {
 
@@ -19,7 +21,12 @@ class _SettingsState extends State<Settings> {
         'Settings',
       ),
       body: Center(
-        child: Text('Settings'),
+        child: InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+            },
+            child: Text('Settings')
+        ),
       ),
     );
   }

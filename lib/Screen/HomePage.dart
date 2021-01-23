@@ -11,16 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   List<String> sampleList = ["category","category""category","category""category","category"];
-
-
   @override
   Widget build(BuildContext context) {
-
     var screenSize = MediaQuery.of(context).size;
-
     return SafeArea(
       child: Scaffold(
         body: Column(

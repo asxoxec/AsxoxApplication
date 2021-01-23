@@ -70,6 +70,9 @@ flutter:
     - family: English
       fonts:
         - asset: fonts/Lato-Regular.ttf
-  #
+    - family: Cambria
+      fonts:
+        - asset: fonts/Cambria.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -3,9 +3,7 @@ import 'package:asxox/widgets/CustomAppBar.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
-
   const CategoryPage({Key key}) : super(key: key);
-
   @override
   _CategoryPageState createState() => _CategoryPageState();
 }
