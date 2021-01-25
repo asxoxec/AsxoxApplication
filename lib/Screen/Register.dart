@@ -1,3 +1,4 @@
+import 'package:asxox/Screen/Cart.dart';
 import 'package:asxox/Screen/HomePage.dart';
 import 'package:asxox/Screen/Profile.dart';
 import 'package:asxox/Screen/UserLogin.dart';
@@ -62,7 +63,7 @@ class _RegisterState extends State<Register> {
                     model: model),
                 //Register Btn
                 UserHelper().getSmallText(
-                    context, "Login here", "Already member yet?", Login())
+                    context, "Login here", "Already member yet?",Cart())
               ],
             ),
           ),

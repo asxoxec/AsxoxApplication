@@ -1,8 +1,6 @@
 
 import 'package:asxox/Screen/Bill.dart';
-import 'package:asxox/Screen/UserLogin.dart';
 import 'package:asxox/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AllCategory extends StatefulWidget {
@@ -19,22 +17,6 @@ class _AllCategoryState extends State<AllCategory> {
     "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/bc951460-0ebf-4bcf-b4c5-1aab4b7e9018_500x.jpg",
     "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/0_aca82c0c-5d55-41e0-b4c4-80c21498a2c0_500x.jpg",
     "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/20191211144050_500x.jpg"
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/NailArt_500x.jpg",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/NailArt_500x.jpg",
-    //"https://cdn.shopify.com/s/files/1/0298/7763/3117/products/138657603_449312519398001_6481460182978025022_n_300x.jpg",
-    //"https://cdn.shopify.com/s/files/1/0298/7763/3117/products/Cover_f809036e-5007-4e3e-b45b-ff926ad91f83_700x.jpg"
-    //"https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Electric_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Home_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Medical_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/tOYS_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Sport_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/shoe_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Electric_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Home_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Medical_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/tOYS_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/Sport_300x.png",
-    // "https://cdn.shopify.com/s/files/1/0298/7763/3117/files/shoe_300x.png"
   ];
   var titleList=[
     "အလှအပ ပစ္စည်းမျာ:",

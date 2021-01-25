@@ -1,16 +1,25 @@
+import 'dart:io';
+
 import 'package:asxox/Screen/AllCategory.dart';
+import 'package:asxox/Screen/Cart.dart';
 import 'package:asxox/Screen/Register.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:asxox/utils/UserHelp.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
 import 'package:flutter/material.dart';
 
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
+
 }
 
 class _LoginState extends State<Login> {
+  @override
+  void initState() {
+    super.initState();
+  }
   var model = User();
   var _phoneController = TextEditingController();
   var _passwordController = TextEditingController();
@@ -51,7 +60,9 @@ class _LoginState extends State<Login> {
                         getBlockBtn(context, "Login", AllCategory(), _formKey),
                         //Login Btn
                         UserHelper().getSmallText(context, "Register here",
-                            "New Customer?", Register())
+                            "New Customer?", Cart()),
+                        //WebView(initialUrl: webUrl,)
+
                       ],
                     ),
                   )
@@ -97,7 +108,7 @@ class _LoginState extends State<Login> {
   }
 
   Row getBlockBtn(context, btnText, navigateTo, _formKey) {
-    MediaQueryData mediaQuery=MediaQuery.of(context);
+    //MediaQueryData mediaQuery=MediaQuery.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
