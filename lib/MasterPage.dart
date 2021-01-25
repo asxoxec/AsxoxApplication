@@ -5,6 +5,7 @@ import 'package:asxox/Screen/HomePage.dart';
 import 'package:asxox/Screen/Settings.dart';
 import 'package:asxox/theme/CustomTheme.dart';
 import 'package:asxox/theme/colors.dart';
+import 'package:asxox/widgets/BuildCart.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
@@ -61,33 +62,7 @@ class _MasterPageState extends State<MasterPage>
                 label: 'Category'
             ),
             BottomNavigationBarItem(
-                icon: Stack(
-                  children: [
-                    Icon(Icons.shopping_cart_outlined),
-                    Positioned(
-                      right: 0,
-                      child: Container(
-                        padding: EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          color: Colors.redAccent,
-                          borderRadius: BorderRadius.circular(6)
-                        ),
-                        constraints: BoxConstraints(
-                          minWidth: 12,
-                          minHeight: 12
-                        ),
-                        child: Text(
-                          '7',
-                          style: TextStyle(
-                            color: CustomColors.white,
-                            fontSize: 10
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                icon: BuildCart(),
               label: 'Cart'
             ),
             BottomNavigationBarItem(

@@ -1,5 +1,7 @@
 
+import 'package:asxox/Screen/ProductOfCategory.dart';
 import 'package:asxox/theme/colors.dart';
+import 'package:asxox/widgets/CustomProductTag.dart';
 import 'package:asxox/widgets/ProductWidget.dart';
 import 'package:asxox/widgets/TitleRow.dart';
 import 'package:asxox/widgets/carousel.dart';
@@ -103,62 +105,44 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                         itemCount: catList.length,
                         itemBuilder: (context, index){
-                          return Container(
-                            width: 40,
-                            height: 40,
-                            margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                            decoration: BoxDecoration(
-                              color: CustomColors.pearlWhite,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(0x29000000),
-                                  offset: Offset(0, 3),
-                                  blurRadius: 6,
+                          return InkWell(
+                            onTap: (){
+                              print('tapped category');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProductOfCategory()));
+                            },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              decoration: BoxDecoration(
+                                color: CustomColors.pearlWhite,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0x29000000),
+                                    offset: Offset(0, 3),
+                                    blurRadius: 6,
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.circular(25.0),
+                                image: DecorationImage(
+                                  image: AssetImage(catList[index]),
+                                  fit: BoxFit.cover
                                 ),
-                              ],
-                              borderRadius: BorderRadius.circular(25.0),
-                              image: DecorationImage(
-                                image: AssetImage(catList[index]),
-                                fit: BoxFit.cover
-                              ),
 
+                              ),
                             ),
                           );
                         })
                   ),
-                  TitleRow(title: "Discount Products",tag: "discount",),
-                  Container(
-                    height: screenSize.height * 0.25,
-                    margin: EdgeInsets.only(left: 20.0),
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index){
-                          return ProductWidget(image: 'toDelete.png',);
-                        }),
+                  CustomProductTag(
+                    image: 'toDelete.png',title: 'Discount Products',tag: 'discount',
                   ),
-                  TitleRow(title: "Home Decoration",tag: "homeDecoration",),
-                  Container(
-                    height: screenSize.height * 0.25,
-                    margin: EdgeInsets.only(left: 20.0),
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index){
-                          return ProductWidget(image: 'toDelete2.png',);
-                        }),
+                  CustomProductTag(
+                    image: 'toDelete2.png', title: 'Featured Products', tag: 'feature',
                   ),
-                  TitleRow(title: "Featured Products",tag: "features",),
-                  Container(
-                    height: screenSize.height * 0.25,
-                    margin: EdgeInsets.only(left: 20.0),
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index){
-                          return ProductWidget(image: 'toDelete3.png',);
-                        }),
-                  )
+                  CustomProductTag(
+                    image: 'toDelete3.png', title: 'Home Decoration', tag: 'home_decoration',
+                  ),
                 ],
               ),
             ),
