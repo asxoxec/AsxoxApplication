@@ -25,8 +25,7 @@ class _SettingsState extends State<Settings> {
       },
       child: Scaffold(
         appBar: CustomAppBar(
-          'Settings',
-        ),
+          'Settings', false),
         body: Center(
           child: Text('Settings'),
         ),

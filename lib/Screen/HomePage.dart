@@ -1,5 +1,6 @@
 
 import 'package:asxox/Screen/ProductOfCategory.dart';
+import 'package:asxox/network/ApiServices.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:asxox/widgets/CustomProductTag.dart';
 import 'package:asxox/widgets/ProductWidget.dart';
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   _initialLoadData() async {
-    //await ApiServices.fetchCategories();
+    await ApiServices.fetchCategories();
   }
 
   @override

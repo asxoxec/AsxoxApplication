@@ -23,7 +23,7 @@ class _CartPageState extends State<CartPage> {
         );
       },
       child: Scaffold(
-        appBar: CustomAppBar('CartPage'),
+        appBar: CustomAppBar('CartPage', false),
         body: Center(
           child: Text('Cart'),
         ),

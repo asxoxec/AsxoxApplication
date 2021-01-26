@@ -40,9 +40,9 @@ class _CarouselSlidesState extends State<CarouselSlides> {
         child: Carousel(
           boxFit: BoxFit.fill,
           images: [
-            NetworkImage('https://cdn.shopify.com/s/files/1/0298/7763/3117/files/a_767dabca-7061-4182-85fe-0b303947a456_2000x.png?v=1610097489'),
-            NetworkImage('https://cdn.shopify.com/s/files/1/0298/7763/3117/files/b_8f41d706-b933-43ca-9a00-5d38fe4e32a5_2000x.png?v=1610442048'),
-            NetworkImage('https://cdn.shopify.com/s/files/1/0298/7763/3117/files/c_93b2f71f-7902-43d4-a9ba-862aef0ec3c5_2000x.png?v=1610097538')
+            NetworkImage('http://192.168.110.248:8080/slide/slide_1.png'),
+            NetworkImage('http://192.168.110.248:8080/slide/slide_2.png'),
+            NetworkImage('http://192.168.110.248:8080/slide/slide_3.png')
           ],
           autoplay: true,
           animationCurve: Curves.fastOutSlowIn,

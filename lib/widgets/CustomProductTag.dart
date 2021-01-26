@@ -30,7 +30,7 @@ class _CustomProductTagState extends State<CustomProductTag> {
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index){
-                return ProductWidget(image: widget.image,);
+                return ProductWidget(image: widget.image,margin: true,);
               }),
         )
       ],

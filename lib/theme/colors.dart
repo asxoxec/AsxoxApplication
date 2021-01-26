@@ -15,5 +15,6 @@ class CustomColors{
   static const Color secondTextColor = const Color(0xff656565);
   static const Color dark = const Color(0x12000000);
   static const Color transparent = Colors.transparent;
+  static const Color red = Colors.red;
 
 }

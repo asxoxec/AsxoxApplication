@@ -62,7 +62,7 @@ class _MasterPageState extends State<MasterPage>
                 label: 'Category'
             ),
             BottomNavigationBarItem(
-                icon: BuildCart(),
+                icon: BuildCart(tap: false,margin: false,),
               label: 'Cart'
             ),
             BottomNavigationBarItem(

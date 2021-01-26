@@ -1,38 +1,38 @@
 
 class CategoryModel {
-  int id,productsCount;
-  String title,handle,description;
-  Pic image;
+  int id;
+  String name,image;
+  List<SubCategory> subCategory;
 
-  CategoryModel({this.id,this.productsCount,this.title,this.handle,this.description,this.image});
+  CategoryModel({this.id, this.name, this.image, this.subCategory});
+
   factory CategoryModel.fromJson(dynamic data){
-    Pic img = data['image'] as Pic;
+
+    List list = data['subcategory'] as List;
+    List<SubCategory> subList = list.map((e) => SubCategory.fromJson(e)).toList();
+
     return CategoryModel(
       id: data['id'],
-      productsCount: data['products_count'],
-      title: data['title'],
-      handle: data['handle'],
-      description: data['description'],
-      image: img
+      name: data['name'],
+      image: data['image'],
+        subCategory: subList
     );
   }
 }
 
-class Pic {
+class SubCategory{
   int id;
-  String createdAt,src;
-  bool alt;
+  String name,image;
 
+  SubCategory({this.id, this.name, this.image});
 
-  Pic({this.id, this.createdAt,this.src, this.alt});
-
-  factory Pic.fromJson(dynamic data){
-    return Pic(
+  factory SubCategory.fromJson(dynamic data){
+    return SubCategory(
       id: data['id'],
-      createdAt: data['created_at'],
-      src: data['src'],
-      alt: data['alt']
+      name: data['name'],
+      image: data['image']
     );
   }
 }
+
 

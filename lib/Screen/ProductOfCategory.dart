@@ -19,7 +19,7 @@ class _ProductOfCategoryState extends State<ProductOfCategory> {
     var width = screenSize.width / 3;
     var height = screenSize.height * 0.3;
     return Scaffold(
-      appBar: CustomAppBar('Bicycle'),
+      appBar: CustomAppBar('Bicycle', true),
       body: Column(
         children: [
           Flexible(
@@ -35,7 +35,7 @@ class _ProductOfCategoryState extends State<ProductOfCategory> {
                     childAspectRatio: width / height
                   ),
                   itemBuilder: (context, index){
-                    return ProductWidget(image: 'toDelete4.jpg');
+                    return ProductWidget(image: 'toDelete4.jpg', margin: false,);
                   }
 
               ),

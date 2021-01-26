@@ -7,8 +7,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
 
   final Size preferredSize;
   final String title;
+  final bool showCart;
 
-  CustomAppBar(this.title,{Key key}) : preferredSize= Size.fromHeight(50.0)
+  CustomAppBar(this.title, this.showCart, {Key key}) : preferredSize= Size.fromHeight(50.0)
   , super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
       ),),
       centerTitle: true,
       actions: [
-        BuildCart()
+        showCart == true ? BuildCart(tap: true,margin: true,) : Container()
       ],
     );
   }

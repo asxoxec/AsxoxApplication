@@ -1,23 +1,30 @@
 
+import 'package:asxox/Screen/ProductDetail.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
-
+  //toDelete
   final String image;
 
-  ProductWidget({this.image, Key key}) : super(key: key);
+  //Real Work
+  final bool margin;
+  //Current Product Model
+  ProductWidget({this.image, this.margin,Key key}) : super(key: key);
 
-  //price , discount price , image
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => ProductDetail()
+        ));
+      },
       child: Container(
-        margin: EdgeInsets.only(
-          right: 10.0
-        ),
+        margin: margin == true ? EdgeInsets.only(
+            right: 10.0
+        ) : null,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(5.0),
