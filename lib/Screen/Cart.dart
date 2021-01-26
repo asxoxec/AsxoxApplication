@@ -1,3 +1,4 @@
+import 'package:asxox/Screen/AllCategory.dart';
 import 'package:asxox/Screen/Bill.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,12 +10,12 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     var imgWidth = mediaQuery.size.width / 5;
     var imgHeight = mediaQuery.size.height / 6;
-    final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
     int price =200000;
     return Scaffold(
         appBar: AppBar(
@@ -31,7 +32,6 @@ class _CartState extends State<Cart> {
                padding: EdgeInsets.all(0),
                height: (mediaQuery.size.height/3)*2,
                 decoration: BoxDecoration(
-
                 ),
                child: ListView.builder(
                  itemCount: 10,
@@ -41,23 +41,23 @@ class _CartState extends State<Cart> {
                    decoration: BoxDecoration(
                        border: Border.all(color:Colors.grey[300]),
                        borderRadius: BorderRadius.circular(5),
-
                    ),
-                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   child: Stack(
                      children: [
-                       getImage(imgWidth, imgHeight, "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/brushcover_500x.jpg"),
-                       getDesText("Woman Blouse", "48000 kyats"),
-                       Column(
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                   Text("X",textAlign: TextAlign.end),
+                           ],
+                           ),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                          children: [
-                           getCountBtn("+"),
-                           SizedBox(height: 10,),
-                           Text("100"),
-                           SizedBox(height: 10,),
-                           getCountBtn("-")
+                           getImage(imgWidth, imgHeight, "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/brushcover_500x.jpg"),
+                           getDesText("Woman Blouse", "48000 kyats"),
+                           getCountBtnColumn(1)
                          ],
-                       )
-
+                       ),
                      ],
                    ),
                  ),
@@ -80,7 +80,17 @@ class _CartState extends State<Cart> {
                ),
              )
              ,
-              getBlockBtn(context, "Check Out", Bill())
+              getBlockBtn(context, "Check Out", Bill()),
+              // InkWell(
+              //   child: Text("Go All Category",style: TextStyle(
+              //     fontSize: 18,
+              //     fontFamily: 'Cambria'
+              //   ),),
+              //   onTap: (){
+              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>AllCategory()));
+              //   },
+              // )
+
             ],
           )
         )
@@ -147,17 +157,24 @@ class _CartState extends State<Cart> {
   }
   Container getCountBtn(txt) {
     return Container(
-      width: 45,
-      height: 45,
+      width: 35,
+      height: 35,
       decoration: BoxDecoration(
         color: Colors.white,
       ),
       child: OutlineButton(
         color: Colors.red,
-          onPressed: () {},
+          onPressed: () {
+          setState(() {
+
+          });
+
+          },
           //color: Colors.red,
           child: Text(
             txt,
+            textAlign: TextAlign.center
+            ,
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -191,6 +208,17 @@ class _CartState extends State<Cart> {
           )
         ],
       ),
+    );
+  }
+  Column getCountBtnColumn(count){
+   return Column(
+      children: [
+        getCountBtn("+"),
+        SizedBox(height: 10,),
+        Text(count.toString()),
+        SizedBox(height: 10,),
+        getCountBtn("-")
+      ],
     );
   }
 }

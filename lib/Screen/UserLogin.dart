@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:asxox/Screen/AllCategory.dart';
 import 'package:asxox/Screen/Cart.dart';
 import 'package:asxox/Screen/Register.dart';
+import 'package:asxox/Screen/UserSetting.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:asxox/utils/UserHelp.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
@@ -60,9 +61,7 @@ class _LoginState extends State<Login> {
                         getBlockBtn(context, "Login", AllCategory(), _formKey),
                         //Login Btn
                         UserHelper().getSmallText(context, "Register here",
-                            "New Customer?", Cart()),
-                        //WebView(initialUrl: webUrl,)
-
+                            "New Customer?", UserSetting()),
                       ],
                     ),
                   )

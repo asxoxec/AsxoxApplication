@@ -1,5 +1,6 @@
 
 import 'package:asxox/Screen/Bill.dart';
+import 'package:asxox/models/Category.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +26,17 @@ class _AllCategoryState extends State<AllCategory> {
     "ထီးများ",
     "ဖိနပ်များ"
   ];
+  List<Category> cats=List.empty();
+  @override
+  void initState() {
+    super.initState();
+    Category.getAllCategory();
+    cats=Category.categories;
+  }
   @override
   Widget build(BuildContext context) {
+    Category.getAllCategory();
+    cats=Category.categories;
     MediaQueryData mediaQuery=MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -50,7 +60,7 @@ class _AllCategoryState extends State<AllCategory> {
         ),
         child:Column(
           children: [
-            ...List.generate(imgList.length, (index) =>
+            ...List.generate(cats.length, (index) =>
                 Container(
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),
@@ -60,7 +70,7 @@ class _AllCategoryState extends State<AllCategory> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                       image: DecorationImage(
-                          image: NetworkImage(imgList[index]),
+                          image: NetworkImage(cats[index].image),
                           fit: BoxFit.cover
                       )
                   ),
@@ -82,7 +92,7 @@ class _AllCategoryState extends State<AllCategory> {
                             MaterialPageRoute(builder: (context) => Bill()));
                       },
                       child:  Text(
-                        titleList[index],
+                        cats[index].name,
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.deepOrange

@@ -48,8 +48,9 @@ class _RegisterState extends State<Register> {
                           controller: _nameController),
                       getInputField(
                           "Enter Your Phone", "Phone is required", phoneMargin,
+                          keyboardType: TextInputType.phone,
                           controller: _phoneController,
-                          keyboardType: TextInputType.phone),
+                          ),
                       getInputField("Enter Password", "Password is required",
                           passwordMargin,
                           controller: _passwordController, obscureText: true),

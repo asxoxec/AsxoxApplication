@@ -22,6 +22,9 @@ class _BillState extends State<Bill> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Billing"),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -32,7 +35,7 @@ class _BillState extends State<Bill> {
               //getMulLineTxt("Please Enter Your Address",minLine: 5,maxLine: 7,controller:_addressController ),
               //getMulLineTxt("Please Enter Your City",controller: _cityController),
               UserHelper().getInputField("Name", "Name is required",nameMargin,controller: _nameController),
-              UserHelper().getInputField("Phone", "Phone is required",phoneMargin,controller: _phoneController),
+              UserHelper().getInputField("Phone", "Phone is required",phoneMargin,keyboardType: TextInputType.phone,controller: _phoneController),
               UserHelper().getInputField("City", "City is required",phoneMargin,controller: _cityController),
               getMulLineTxt("Please Enter Your Address",minLine: 5,maxLine: 7,controller:_addressController ),
               getBlockBtn(context, "Order", Profile())
