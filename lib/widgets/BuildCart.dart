@@ -1,4 +1,5 @@
 
+import 'package:asxox/Screen/CartPage.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,10 @@ class _BuildCartState extends State<BuildCart> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.tap == true ? (){} : null,
+      onTap: widget.tap == true ? (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => CartPage()));
+      } : null,
       child: Container(
         margin: widget.margin == true ? EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0) : null,
         alignment: Alignment.center,

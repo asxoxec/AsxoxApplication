@@ -46,12 +46,9 @@ class _MasterPageState extends State<MasterPage>
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
+          selectedItemColor: CustomColors.deepOrange,
           onTap: _onItemTapped,
-          selectedItemColor: Theme.of(context).primaryColor,
           elevation: 4.0,
-          selectedIconTheme: CustomTheme.deepTheme,
-          showUnselectedLabels: true,
-          showSelectedLabels: true,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined,),

@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class ProductDetail extends StatefulWidget {
+
   @override
   _ProductDetailState createState() => _ProductDetailState();
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+
+  List<String> imgList = ["assets/images/22.jpg","assets/images/33.jpg","assets/images/44.jpg","assets/images/55.jpg","assets/images/66.jpg"];
 
   //ProductModel product = Global.productList[0];
   @override
@@ -168,9 +171,6 @@ class _ProductDetailState extends State<ProductDetail> {
                       ],
                     ),
                   ),
-                  Container(
-                    height: 500,
-                  )
                   // Text(product.price.toString()),
                   // Html(
                   //   data: Global.htmlData,
