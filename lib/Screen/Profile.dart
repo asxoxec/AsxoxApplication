@@ -21,8 +21,8 @@ class _ProfileState extends State<Profile> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              getEditBtn(context),
-              UserHelper().getHeaderText("Profile"),
+             // getEditBtn(context),
+              UserHelper().getHeaderText("User Profile"),
               UserHelper().getTextBlock("Name", "Will Smith"),
               UserHelper().getTextBlock("Phone", "09 300300300"),
               getBlockBtn(context, "Home", Login()),
@@ -43,19 +43,19 @@ class _ProfileState extends State<Profile> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 30),
             child: Container(
+              height: 40,
               margin: EdgeInsets.only(bottom: 10, top: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: CustomColors.deepOrange),
               child: FlatButton(
-                height: 50,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => navigateTo));
                 },
                 child: Text(
                   btnText,
-                  style: TextStyle(fontSize: 20,color: Colors.white),
+                  style: TextStyle(fontSize: 18,color: Colors.white),
                 ),
                 // color: Colors.amber,
               ),
@@ -77,20 +77,18 @@ class _ProfileState extends State<Profile> {
           height: 40,
           //alignment: Alignment.topRight,
           decoration: BoxDecoration(
-              border: Border.all(width: 1,color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
+             // border: Border.all(width: 1,color: Colors.grey),
+            //  borderRadius: BorderRadius.circular(5),
               //color: Colors.grey
             //color: Colors.orangeAccent
           ),
-          child: SizedBox(
-            child: IconButton(
-                icon: Icon(Icons.edit, size: 26,),
-                //color: Colors.white,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Register()));
-                }),
-          ),
+          child: IconButton(
+              icon: Icon(Icons.edit_outlined, size: 26,),
+              //color: Colors.white,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Register()));
+              }),
 
         ),
       ],

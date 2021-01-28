@@ -75,32 +75,32 @@ class _AllCategoryState extends State<AllCategory> {
                       )
                   ),
                   //child: Image.network(imgList[0]),
-                  child:Container(
-                    decoration: BoxDecoration(
-                      color: CustomColors.blueGrey,
-                      border: Border.all(width: 1,color: Colors.transparent),
-                    // borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomLeft: Radius.circular(20))
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20))
-
-                ),
-                    child: FlatButton(
-                      minWidth: width/2,
-                      padding: EdgeInsets.all(5),
-                     // color: Colors.white70,
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Bill()));
-                      },
-                      child:  Text(
-                        cats[index].name,
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.deepOrange
-                        ),
-                      ),
-                    ),
+                //   child:Container(
+                //     decoration: BoxDecoration(
+                //       color: CustomColors.blueGrey,
+                //       border: Border.all(width: 1,color: Colors.transparent),
+                //     // borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomLeft: Radius.circular(20))
+                //       borderRadius: BorderRadius.only(topLeft: Radius.circular(20))
+                //
+                // ),
+                    // child: FlatButton(
+                    //   minWidth: width/2,
+                    //   padding: EdgeInsets.all(5),
+                    //  // color: Colors.white70,
+                    //   onPressed: (){
+                    //     Navigator.push(context,
+                    //         MaterialPageRoute(builder: (context) => Bill()));
+                    //   },
+                    //   child:  Text(
+                    //     cats[index].name,
+                    //     style: TextStyle(
+                    //         fontSize: 18,
+                    //         color: Colors.deepOrange
+                    //     ),
+                    //   ),
+                    // ),
                   )
-                )
+                //)
             )
           ],
         )

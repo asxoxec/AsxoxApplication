@@ -43,18 +43,18 @@ class _RegisterState extends State<Register> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      getInputField(
+                      UserHelper().getInputField(
                           "Enter Your Name", "Name is required", nameMargin,
                           controller: _nameController),
-                      getInputField(
+                      UserHelper().getInputField(
                           "Enter Your Phone", "Phone is required", phoneMargin,
                           keyboardType: TextInputType.phone,
                           controller: _phoneController,
                           ),
-                      getInputField("Enter Password", "Password is required",
+                      UserHelper().getInputField("Enter Password", "Password is required",
                           passwordMargin,
                           controller: _passwordController, obscureText: true),
-                      getInputField("Enter Confirmation Password",
+                      UserHelper().getInputField("Enter Confirmation Password",
                           "Confirmation Password is required", passwordMargin,controller: _confirmPasswordController,
                           obscureText: true),
                     ],
@@ -73,38 +73,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Container getInputField(hintText, errText, marginObj,
-      {obscureText: false, keyboardType, controller}) {
-    return Container(
-      height: 50,
-      margin: EdgeInsets.only(
-          top: marginObj['top'],
-          left: marginObj['left'],
-          right: marginObj['right'],
-          bottom: marginObj['bottom']),
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(5),
-        //color: borderColor
-      ),
-      child: TextFormField(
-        controller: controller,
-        obscureText: obscureText,
-        keyboardType: keyboardType,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 15),
-          border: InputBorder.none,
-          hintText: hintText,
-        ),
-        validator: (value) {
-          if (value.isEmpty) {
-            return " ";
-          } else {}
-          return null;
-        },
-      ),
-    );
-  }
+
 
   Row getBlockBtn(context, btnText, navigateTo, _formKey, {model}) {
     return Row(
@@ -114,12 +83,12 @@ class _RegisterState extends State<Register> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 30),
             child: Container(
+              height: 40,
               margin: EdgeInsets.only(bottom: 20, top: 40),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: CustomColors.deepOrange),
               child: FlatButton(
-                height: 50,
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     print("From Helper Class");
@@ -136,7 +105,7 @@ class _RegisterState extends State<Register> {
                 },
                 child: Text(
                   btnText,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 // color: Colors.amber,
               ),

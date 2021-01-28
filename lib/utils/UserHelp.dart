@@ -11,16 +11,16 @@ class UserHelper {
   /* Getting Header Text */
   Padding getHeaderText(headText) {
     return (Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.only(top:10,left: 30,right: 30,bottom: 30),
         child: Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.only(top: 50),
+          margin: EdgeInsets.only(top: 40),
           child: new Text(
             headText,
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: CustomColors.black,
-                fontSize: 30,
+                fontSize: 26,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'English'),
           ),
@@ -55,7 +55,7 @@ class UserHelper {
   /* Text Container Block */
   Container  getTextBlock(title,des){
     return Container(
-      color: Colors.grey[300],
+      color: Colors.grey[100],
       margin: EdgeInsets.all(30),
       padding: EdgeInsets.all(30),
       alignment: Alignment.topLeft,
@@ -79,9 +79,8 @@ class UserHelper {
   /* Get InputField */
   Container getInputField(hintText, errText, marginObj,
       {obscureText: false, keyboardType, controller, field}) {
-    var borderColor = Colors.white10;
     return Container(
-      height: 50,
+      height: 45,
       margin: EdgeInsets.only(
           top: marginObj['top'],
           left: marginObj['left'],
@@ -89,7 +88,7 @@ class UserHelper {
           bottom: marginObj['bottom']),
       decoration: BoxDecoration(
         border: Border.all(),
-        borderRadius: BorderRadius.circular(5),
+        //borderRadius: BorderRadius.circular(5),
         //color: borderColor
       ),
       child: TextFormField(

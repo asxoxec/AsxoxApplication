@@ -22,8 +22,8 @@ class Category {
   }
 
  static Future<void> getAllCategory() async {
-    // url="http://192.168.110.211:9090/api/category";
-   var url="http://192.168.110.248:8080/api/category";
+    var url="http://192.168.110.211:9090/api/category";
+   //var url="http://192.168.110.248:8080/api/category";
     Response response=await http.get(url);
     List<dynamic> data=jsonDecode(response.body)['data'] as List;
     categories= data.map((dynamic item) => Category.fromJson(item)).toList();
@@ -44,6 +44,12 @@ class SubCategory{
  }
 
 }
+
+
+
+
+
+
 
 
 

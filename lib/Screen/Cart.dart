@@ -10,94 +10,109 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    var imgWidth = mediaQuery.size.width / 5;
+    var imgWidth = mediaQuery.size.width / 4;
     var imgHeight = mediaQuery.size.height / 6;
-    int price =200000;
+    int price = 200000;
+    int count=100;
+    GlobalKey<ScaffoldState> _scaffoldKey=GlobalKey();
     return Scaffold(
         appBar: AppBar(
           title: Text("Your Cart"),
         ),
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-             Flexible(
-                 child:
-             Container(
-               margin: EdgeInsets.only(left: 30,right: 30),
-               padding: EdgeInsets.all(0),
-               height: (mediaQuery.size.height/3)*2,
-                decoration: BoxDecoration(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+                child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.all(0),
+              height: (mediaQuery.size.height / 3) * 2,
+              decoration: BoxDecoration(),
+              child: ListView.builder(
+                itemCount:10 ,
+                itemBuilder: (context, index) => Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey[300]),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top:-4,
+                        right: -1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [InkWell(
+                            onTap: (){
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 2),
+                              child: Text("X",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red
+                                  ),
+                                  textAlign: TextAlign.end),
+                            ),
+                          )],
+                        ),
+                      ),
+                      SizedBox(height: 30,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          getImage(imgWidth, imgHeight,
+                              "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/20191211144050_500x.jpg"
+                          ),
+                         SizedBox(width: 10,),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start ,
+                            children: [
+                              getDesText("Woman Blouse", "48000 kyats"),
+                              SizedBox(height: 20,),
+                              getCountBtnColumn(count.toString()),
+                            ],
+                          ),
+                          SizedBox(width: 10,),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-               child: ListView.builder(
-                 itemCount: 10,
-                 itemBuilder: (context,index)=>Container(
-                   margin: EdgeInsets.only(bottom: 10),
-                   padding: EdgeInsets.all(10),
-                   decoration: BoxDecoration(
-                       border: Border.all(color:Colors.grey[300]),
-                       borderRadius: BorderRadius.circular(5),
-                   ),
-                   child: Stack(
-                     children: [
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.end,
-                           children: [
-                   Text("X",textAlign: TextAlign.end),
-                           ],
-                           ),
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: [
-                           getImage(imgWidth, imgHeight, "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/brushcover_500x.jpg"),
-                           getDesText("Woman Blouse", "48000 kyats"),
-                           getCountBtnColumn(1)
-                         ],
-                       ),
-                     ],
-                   ),
-                 ),
-               ),
-             )),
-             SizedBox(height: 30,),
-             Container(
-               margin: EdgeInsets.only(left: 30,right: 30),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Total Price",style: TextStyle(
-                     fontSize: 26,
-                     fontWeight: FontWeight.bold
-                   ),),
-                   Text("$price",style: TextStyle(
-                       fontSize: 26,fontWeight: FontWeight.bold
-                   ) ,)
-                 ],
-               ),
-             )
-             ,
-              getBlockBtn(context, "Check Out", Bill()),
-              // InkWell(
-              //   child: Text("Go All Category",style: TextStyle(
-              //     fontSize: 18,
-              //     fontFamily: 'Cambria'
-              //   ),),
-              //   onTap: (){
-              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>AllCategory()));
-              //   },
-              // )
+              ),
+            )),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30, right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total Price",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "$price",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ),
+            getBlockBtn(context, "Check Out", Bill()),
 
-            ],
-          )
-        )
-    );
+          ],
+        )));
   }
-  
-  
 
   Row getBlockBtn(context, btnText, navigateTo) {
     return Row(
@@ -107,19 +122,19 @@ class _CartState extends State<Cart> {
           child: Padding(
             padding: const EdgeInsets.all(0),
             child: Container(
-             margin: EdgeInsets.all(30),
+              height: 40,
+              margin: EdgeInsets.all(30),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: CustomColors.deepOrange),
               child: FlatButton(
-                height: 50,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => navigateTo));
                 },
                 child: Text(
                   btnText,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 // color: Colors.amber,
               ),
@@ -129,6 +144,7 @@ class _CartState extends State<Cart> {
       ],
     );
   }
+
   Container getImage(imgWidth, imgHeight, imgLink) {
     return Container(
         //margin: EdgeInsets.only(left: 30),
@@ -138,6 +154,7 @@ class _CartState extends State<Cart> {
           imgLink,
         ));
   }
+
   Container getDesText(title, price) {
     return Container(
       child: Column(
@@ -145,64 +162,69 @@ class _CartState extends State<Cart> {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 26, color: CustomColors.blueGrey),
+            style: TextStyle(fontSize: 16, color: CustomColors.blueGrey),
           ),
+          SizedBox(height: 10,),
           Text(
             price,
-            style: TextStyle(fontSize: 20, color: CustomColors.blueGrey),
+            style: TextStyle(fontSize: 13, color: CustomColors.blueGrey),
           )
         ],
       ),
     );
   }
+
   Container getCountBtn(txt) {
     return Container(
-      width: 35,
-      height: 35,
+      width: 30,
+      height: 30,
       decoration: BoxDecoration(
         color: Colors.white,
       ),
       child: OutlineButton(
-        color: Colors.red,
+          color: Colors.red,
           onPressed: () {
-          setState(() {
+            setState(() {
 
-          });
-
+            });
           },
           //color: Colors.red,
           child: Text(
             txt,
-            textAlign: TextAlign.center
-            ,
+            textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: CustomColors.blueGrey),
           )),
     );
   }
-  Container getOrderRow(imgWidth,imgHeight){
-   return Container(
-     margin: EdgeInsets.only(bottom: 10),
 
-     //margin: EdgeInsets.only(left: 30,right: 30),
-      padding: EdgeInsets.all(10),
+  Container getOrderRow(imgWidth, imgHeight) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+
+      //margin: EdgeInsets.only(left: 30,right: 30),
+      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey[300]),
-          borderRadius: BorderRadius.circular(5)
-      ),
+          borderRadius: BorderRadius.circular(5)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          getImage(imgWidth, imgHeight, "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/brushcover_500x.jpg"),
-          getDesText("Woman  Shirt", "18000 Kyats"),
+          getImage(imgWidth, imgHeight,
+              "https://cdn.shopify.com/s/files/1/0298/7763/3117/products/brushcover_500x.jpg"),
           Column(
             children: [
+              getDesText("Woman  Shirt", "18000 Kyats"),
               getCountBtn("+"),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text("1000"),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               getCountBtn("-"),
             ],
           )
@@ -210,15 +232,28 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-  Column getCountBtnColumn(count){
-   return Column(
+
+  Row getCountBtnColumn(count) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         getCountBtn("+"),
-        SizedBox(height: 10,),
-        Text(count.toString()),
-        SizedBox(height: 10,),
+        SizedBox(
+          width: 10,
+        ),
+        Text(count),
+        SizedBox(
+          width: 10,
+        ),
         getCountBtn("-")
       ],
     );
   }
+
+
+
 }
+
+
+
+

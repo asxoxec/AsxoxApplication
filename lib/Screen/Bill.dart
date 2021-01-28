@@ -30,10 +30,6 @@ class _BillState extends State<Bill> {
           child: Column(
             children: [
               UserHelper().getHeaderText("Billing Address"),
-              //UserHelper().getTextBlock("Name", "Will Smith"),
-             // UserHelper().getTextBlock("Phone", "09 300300300"),
-              //getMulLineTxt("Please Enter Your Address",minLine: 5,maxLine: 7,controller:_addressController ),
-              //getMulLineTxt("Please Enter Your City",controller: _cityController),
               UserHelper().getInputField("Name", "Name is required",nameMargin,controller: _nameController),
               UserHelper().getInputField("Phone", "Phone is required",phoneMargin,keyboardType: TextInputType.phone,controller: _phoneController),
               UserHelper().getInputField("City", "City is required",phoneMargin,controller: _cityController),
@@ -54,7 +50,7 @@ class _BillState extends State<Bill> {
         padding: EdgeInsets.only(top: 7, left: 10),
         decoration: BoxDecoration(
             border: Border.all(),
-            borderRadius: BorderRadius.circular(5)
+            //borderRadius: BorderRadius.circular(5)
         ),
         child: TextFormField(
           minLines: minLine,
@@ -77,19 +73,19 @@ class _BillState extends State<Bill> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 30),
             child: Container(
+              height: 40,
               margin: EdgeInsets.only(bottom: 10, top: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: CustomColors.deepOrange),
               child: FlatButton(
-                height: 50,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => navigateTo));
                 },
                 child: Text(
                   btnText,
-                  style: TextStyle(fontSize: 20,color: Colors.white),
+                  style: TextStyle(fontSize: 16,color: Colors.white),
                 ),
                 // color: Colors.amber,
               ),
