@@ -23,7 +23,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     super.initState();
-    cats = Global.categoryList;
+    //cats = Global.categoryList;
   }
 
   @override
@@ -39,7 +39,7 @@ class _CategoryPageState extends State<CategoryPage> {
       },
       child: Scaffold(
         body: SingleChildScrollView(
-            child:Container(
+            child: Container(
               width: screenSize.size.width,
               child: getBlockCategory(screenSize.size.width, screenSize.size.height),
             )

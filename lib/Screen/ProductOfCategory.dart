@@ -1,5 +1,7 @@
 
+import 'package:asxox/models/CategoryModel.dart';
 import 'package:asxox/theme/colors.dart';
+import 'package:asxox/utils/Global.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
 import 'package:asxox/widgets/ProductWidget.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,17 @@ class ProductOfCategory extends StatefulWidget {
 }
 
 class _ProductOfCategoryState extends State<ProductOfCategory> {
+   CategoryModel cat;
+  _loadData(){
+    cat = Global.curCategoryModel;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -27,7 +40,7 @@ class _ProductOfCategoryState extends State<ProductOfCategory> {
               margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
               child: GridView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount: 40,
+                  itemCount: cat.subCategory.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     mainAxisSpacing: 10.0,
@@ -35,7 +48,9 @@ class _ProductOfCategoryState extends State<ProductOfCategory> {
                     childAspectRatio: width / height
                   ),
                   itemBuilder: (context, index){
-                    return ProductWidget(image: 'toDelete4.jpg', margin: false,);
+                    return ProductWidget(
+                      image: cat.subCategory[index].image,
+                      margin: false,);
                   }
 
               ),

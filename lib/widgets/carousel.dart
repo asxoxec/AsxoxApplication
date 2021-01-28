@@ -20,9 +20,6 @@ class _CarouselSlidesState extends State<CarouselSlides> {
     'https://cdn.shopify.com/s/files/1/0298/7763/3117/files/c_93b2f71f-7902-43d4-a9ba-862aef0ec3c5_2000x.png?v=1610097538',
   ];
   final List<String> images = [
-    'https://cdn.shopify.com/s/files/1/0513/8205/9159/products/iPhone-12_Blue_a577a8a9-c0f7-473a-8999-a3f3347193e3.jpg',
-    'https://cdn.shopify.com/s/files/1/0513/8205/9159/products/iPhone-12_Blue_a577a8a9-c0f7-473a-8999-a3f3347193e3.jpg',
-    'https://cdn.shopify.com/s/files/1/0513/8205/9159/products/iPhone-12_Blue_a577a8a9-c0f7-473a-8999-a3f3347193e3.jpg'
     'https://images.unsplash.com/photo-1586882829491-b81178aa622e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80',
     'https://images.unsplash.com/photo-1586871608370-4adee64d1794?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2862&q=80',
     'https://images.unsplash.com/photo-1586901533048-0e856dff2c0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
@@ -40,9 +37,10 @@ class _CarouselSlidesState extends State<CarouselSlides> {
         child: Carousel(
           boxFit: BoxFit.fill,
           images: [
-            NetworkImage('http://192.168.110.248:8080/slide/slide_1.png'),
-            NetworkImage('http://192.168.110.248:8080/slide/slide_2.png'),
-            NetworkImage('http://192.168.110.248:8080/slide/slide_3.png')
+            NetworkImage(images[3]),
+            NetworkImage(images[5]),
+            NetworkImage(images[2
+            ])
           ],
           autoplay: true,
           animationCurve: Curves.fastOutSlowIn,

@@ -1,10 +1,10 @@
 
 class CategoryModel {
   int id;
-  String name,image;
+  String name,image,icon;
   List<SubCategory> subCategory;
 
-  CategoryModel({this.id, this.name, this.image, this.subCategory});
+  CategoryModel({this.id, this.name, this.image, this.icon, this.subCategory});
 
   factory CategoryModel.fromJson(dynamic data){
 
@@ -15,7 +15,8 @@ class CategoryModel {
       id: data['id'],
       name: data['name'],
       image: data['image'],
-        subCategory: subList
+      icon: data['icon'],
+      subCategory: subList
     );
   }
 }

@@ -172,10 +172,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     ),
                   ),
                   // Text(product.price.toString()),
-                  // Html(
-                  //   data: Global.htmlData,
-                  // )
-                ],
+                                  ],
               ),
             ),
           ),

@@ -41,7 +41,7 @@ class _MasterPageState extends State<MasterPage>
           controller: _pageController,
           children: _screens,
           onPageChanged: _onPageChanged,
-          physics: NeverScrollableScrollPhysics(),
+          physics: BouncingScrollPhysics(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

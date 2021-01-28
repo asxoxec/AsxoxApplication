@@ -1,7 +1,8 @@
-
 import 'package:asxox/Screen/ProductOfCategory.dart';
+import 'package:asxox/models/CategoryModel.dart';
 import 'package:asxox/network/ApiServices.dart';
 import 'package:asxox/theme/colors.dart';
+import 'package:asxox/utils/Global.dart';
 import 'package:asxox/widgets/CustomProductTag.dart';
 import 'package:asxox/widgets/ProductWidget.dart';
 import 'package:asxox/widgets/TitleRow.dart';
@@ -30,13 +31,15 @@ class _HomePageState extends State<HomePage> {
     'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
   ];
 
-  final List<String> catList = [
-    'assets/images/discount.png','assets/images/bag.png','assets/images/cosmetics.png','assets/images/bag.png',
-    'assets/images/electric.png','assets/images/shoe.png','assets/images/sports.png','assets/images/toys.png',
-  ];
+  // final List<String> catList = [
+  //   'assets/images/discount.png','assets/images/bag.png','assets/images/cosmetics.png','assets/images/bag.png',
+  //   'assets/images/electric.png','assets/images/shoe.png','assets/images/sports.png','assets/images/toys.png',
+  // ];
 
-  _initialLoadData() async {
-    await ApiServices.fetchCategories();
+  List<CategoryModel> catList;
+
+  _initialLoadData() {
+    catList = Global.categoryList;
   }
 
   @override
@@ -87,53 +90,55 @@ class _HomePageState extends State<HomePage> {
                   CarouselSlides(),
                   TitleRow(title: 'Category',tag: 'allCategory',),
                   Container(
-                    width: screenSize.width,
-                    height: 50.0,
-                    margin: EdgeInsets.symmetric(horizontal: 10.0),
-                    padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9.0),
-                      color: const Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                        itemCount: catList.length,
-                        itemBuilder: (context, index){
-                          return InkWell(
-                            onTap: (){
-                              print('tapped category');
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProductOfCategory()));
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: BoxDecoration(
-                                color: CustomColors.pearlWhite,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: const Color(0x29000000),
-                                    offset: Offset(0, 3),
-                                    blurRadius: 6,
+                      width: screenSize.width,
+                      height: 50.0,
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9.0),
+                        color: const Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0x29000000),
+                            offset: Offset(0, 3),
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: catList.length,
+                          itemBuilder: (context, index){
+                            return InkWell(
+                              onTap: (){
+                                print('tapped category');
+                                Global.curCategoryModel = catList[index];
+                                Global.curCatIndex = index;
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductOfCategory()));
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.pearlWhite,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color(0x29000000),
+                                      offset: Offset(0, 3),
+                                      blurRadius: 6,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                      image: NetworkImage(catList[index].icon),
+                                      fit: BoxFit.cover
                                   ),
-                                ],
-                                borderRadius: BorderRadius.circular(25.0),
-                                image: DecorationImage(
-                                  image: AssetImage(catList[index]),
-                                  fit: BoxFit.cover
-                                ),
 
+                                ),
                               ),
-                            ),
-                          );
-                        })
+                            );
+                          })
                   ),
                   CustomProductTag(
                     image: 'toDelete.png',title: 'Discount Products',tag: 'discount',
