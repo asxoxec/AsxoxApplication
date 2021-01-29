@@ -29,6 +29,12 @@ class _CarouselSlidesState extends State<CarouselSlides> {
     'https://images.unsplash.com/photo-1586953983027-d7508a64f4bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
   ];
 
+  final List<String> slideList = [
+    "https://www.benevaplantscapes.com/wp-content/uploads/2016/10/plants-in-office.jpg",
+    "https://octoclean.com/wp-content/uploads/2019/07/office-plant-cleaning.jpg",
+    "https://craftysheep.net/wp-content/uploads/2020/03/18-Best-Large-Indoor-Plants-for-Home-Offices5.jpg"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,10 +43,9 @@ class _CarouselSlidesState extends State<CarouselSlides> {
         child: Carousel(
           boxFit: BoxFit.fill,
           images: [
-            NetworkImage(images[3]),
-            NetworkImage(images[5]),
-            NetworkImage(images[2
-            ])
+            NetworkImage(slideList[0]),
+            NetworkImage(slideList[1]),
+            NetworkImage(slideList[2]),
           ],
           autoplay: true,
           animationCurve: Curves.fastOutSlowIn,

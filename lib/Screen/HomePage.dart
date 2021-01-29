@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CarouselSlides(),
-                  TitleRow(title: 'Category',tag: 'allCategory',),
+                  TitleRow(title: 'အမျိုးအစားများ',tag: 'allCategory',),
                   Container(
                       width: screenSize.width,
                       height: 50.0,
@@ -141,13 +141,16 @@ class _HomePageState extends State<HomePage> {
                           })
                   ),
                   CustomProductTag(
-                    image: 'toDelete.png',title: 'Discount Products',tag: 'discount',
+                    image: 'https://i1.wp.com/www.easydiyandcrafts.com/wp-content/uploads/2020/03/steel-rack.jpg',title: '',tag: 'fitness',
                   ),
                   CustomProductTag(
-                    image: 'toDelete2.png', title: 'Featured Products', tag: 'feature',
+                    image: 'https://images-na.ssl-images-amazon.com/images/I/716BheiYp7L._AC_SX466_.jpg', title: '', tag: 'feature',
                   ),
                   CustomProductTag(
-                    image: 'toDelete3.png', title: 'Home Decoration', tag: 'home_decoration',
+                    image: 'https://i.ebayimg.com/images/g/Dl8AAOSwTXdciczI/s-l400.jpg', title: '', tag: 'home_decoration',
+                  ),
+                  CustomProductTag(
+                    image: 'https://www.nowandthencollectibles.com/Catalog2/wp-content/uploads/2006/08/Buzz-LightYear-Karate-Chop-Action-Figure.jpg', title: '', tag: 'toy',
                   ),
                 ],
               ),
@@ -172,11 +175,13 @@ class _HomePageState extends State<HomePage> {
 class MySliverAppBar extends SliverPersistentHeaderDelegate{
 
   final double expandedHeight;
+  double shrinky;
 
   MySliverAppBar({@required this.expandedHeight});
 
   outShrink(shrink){
     print("Shrink : $shrink");
+    shrinky = shrink;
   }
 
   @override
@@ -235,7 +240,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate{
               margin: EdgeInsets.symmetric(horizontal: 10.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                color: CustomColors.pearlWhite,
+                color: Colors.white.withOpacity(0.7),
                 boxShadow: [
                   BoxShadow(
                     color: const Color(0x3392a0b2),
