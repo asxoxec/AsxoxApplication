@@ -26,6 +26,7 @@ class ApiServices{
 
       Global.categoryList = list.map((e) => CategoryModel.fromJson(e)).toList();
 
+      print("Category List" +Global.categoryList.toString());
       Global.categoryList.forEach((p) {
         print("Category Name : " + p.name);
       });

@@ -1,6 +1,8 @@
 import 'package:asxox/MasterPage.dart';
 import 'package:asxox/Screen/HomePage.dart';
+import 'package:asxox/Screen/LogIn.dart';
 import 'package:asxox/Screen/MainScreen.dart';
+import 'package:asxox/Screen/SignUp.dart';
 import 'package:asxox/Screen/SplashScreeen.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,9 @@ void main() {
     routes: {
       "/" : (context) => SplashScreen(),
       "/home" : (context) => HomePage(),
-      "/master" : (context) => MasterPage()
+      "/master" : (context) => MasterPage(),
+      "/login" : (context) => LogIn(),
+      "/signup" : (context) => SignUp()
     },
   ));
 }

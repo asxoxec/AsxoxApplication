@@ -3,6 +3,7 @@ import 'package:asxox/models/ProductModel.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:asxox/utils/Global.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -14,7 +15,17 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
 
-  List<String> imgList = ["assets/images/22.jpg","assets/images/33.jpg","assets/images/44.jpg","assets/images/55.jpg","assets/images/66.jpg"];
+  ProductModel product;
+
+  _initialLoadData(){
+    product = Global.curProduct;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initialLoadData();
+  }
 
   //ProductModel product = Global.productList[0];
   @override
@@ -31,27 +42,46 @@ class _ProductDetailState extends State<ProductDetail> {
               child: Column(
                 children: [
                   Container(
-                    width: screenSize.width,
-                    height: screenSize.height / 1.5,
-                    margin: EdgeInsets.all(5.0),
+                    height: screenSize.height/2,
                     decoration: BoxDecoration(
-                        color: CustomColors.pearlWhite,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
+                              color: Colors.black12,
+                              offset: Offset(2, 2),
+                              blurRadius: 4),
+                          BoxShadow(
+                              color: Colors.white38, offset: Offset(0, 4))
+                        ]),
+                    child: CarouselSlider.builder(
+                      itemCount: product.images.length,
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        aspectRatio: 2.0,
+                        enlargeCenterPage: true,
+                      ),
+                      itemBuilder: (context, ind) {
+                        return InkWell(
+                          onTap: () {
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: screenSize.height/2,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    product.images[ind],
+                                  ),
+                                  fit: BoxFit.contain,
+                                )),
+//                child: Text(
+//                    Global.popular[ind].item3,
+//                  style: _buildTitleTextStyle(),
+//                ),
                           ),
-                        ],
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10.0),
-                          bottomRight: Radius.circular(10.0),
-                        ),
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/11.jpg'
-                        ),fit: BoxFit.cover
-                      )
+                        );
+                      },
                     ),
                   ),
                   ListTile(
@@ -67,26 +97,26 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                           ],
                           image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/11.jpg'
+                              image: NetworkImage(
+                                  product.cover
                               ),fit: BoxFit.cover
                           )
                       ),
                     ),
-                    title: Text('VR Box', style: TextStyle(
+                    title: Text(product.title, style: TextStyle(
                       color: CustomColors.deepOrange,
-                      fontSize: 16
+                      fontSize: 22, height: 1.5000000476837158
                     ),),
                     subtitle: RichText(
                       text: TextSpan(
                         children: [
-                          TextSpan(text: '73,000',style: TextStyle(
+                          TextSpan(text: Global.formatPrice(product.discount),style: TextStyle(
                             color: CustomColors.red,
                             fontWeight: FontWeight.w800,
                             fontSize: 18
                           )),
                           TextSpan(text: '  '),
-                          TextSpan(text: '89,000',style: TextStyle(
+                          TextSpan(text: Global.formatPrice(product.price),style: TextStyle(
                             color: CustomColors.grey,
                             decoration: TextDecoration.lineThrough
                           ))
@@ -171,8 +201,24 @@ class _ProductDetailState extends State<ProductDetail> {
                       ],
                     ),
                   ),
-                  // Text(product.price.toString()),
-                                  ],
+                  Container(
+                    height: 400,
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: product.images.length,
+                        itemBuilder: (context, index){
+                          return Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(product.images[index]),
+                                fit: BoxFit.cover
+                              ),
+
+                            ),
+                          );
+                        }),
+                  )
+                ],
               ),
             ),
           ),

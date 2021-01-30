@@ -1,6 +1,9 @@
 
 import 'package:asxox/models/CategoryModel.dart';
 import 'package:asxox/models/ProductModel.dart';
+import 'dart:math';
+
+import 'package:intl/intl.dart';
 
 class Global {
 
@@ -13,4 +16,13 @@ class Global {
   // Category
   static int curCatIndex;
   static CategoryModel curCategoryModel;
+
+  // Product
+  static ProductModel curProduct;
+
+  static String formatPrice(int price) {
+    var f = NumberFormat("##,###");
+    return f.format(price);
+  }
+
 }

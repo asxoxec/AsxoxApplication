@@ -35,27 +35,27 @@ class _ProductOfCategoryState extends State<ProductOfCategory> {
       appBar: CustomAppBar('Bicycle', true),
       body: Column(
         children: [
-          Flexible(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-              child: GridView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: cat.subCategory.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
-                    childAspectRatio: width / height
-                  ),
-                  itemBuilder: (context, index){
-                    return ProductWidget(
-                      image: cat.subCategory[index].image,
-                      margin: false,);
-                  }
-
-              ),
-            ),
-          ),
+          // Flexible(
+          //   child: Container(
+          //     margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+          //     child: GridView.builder(
+          //         scrollDirection: Axis.vertical,
+          //         itemCount: cat.subCategory.length,
+          //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 3,
+          //           mainAxisSpacing: 10.0,
+          //           crossAxisSpacing: 10.0,
+          //           childAspectRatio: width / height
+          //         ),
+          //         itemBuilder: (context, index){
+          //           return ProductWidget(
+          //             image: cat.subCategory[index].image,
+          //             margin: false,);
+          //         }
+          //
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

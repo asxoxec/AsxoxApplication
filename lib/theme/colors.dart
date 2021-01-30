@@ -16,5 +16,6 @@ class CustomColors{
   static const Color dark = const Color(0x12000000);
   static const Color transparent = Colors.transparent;
   static const Color red = Colors.red;
+  static const Color accent = Color(0xff475993);
 
 }

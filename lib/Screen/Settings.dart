@@ -2,6 +2,8 @@
 
 import 'package:asxox/MasterPage.dart';
 import 'package:asxox/Screen/CartPage.dart';
+import 'package:asxox/Screen/LogIn.dart';
+import 'package:asxox/Screen/SignUp.dart';
 import 'package:asxox/theme/colors.dart';
 import 'package:asxox/widgets/CustomAppBar.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +18,11 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
 
-  List<String>  titles=["LogIn", "Register", "Orders","Policy and rules","Term of Services","About Us"];
-  List<Icon> icons = [Icon(Icons.login), Icon(Icons.person_add), Icon(Icons.reorder),Icon(Icons.article_outlined), Icon(Icons.policy), Icon(Icons.info)];
+  //"LogIn", "Register",
+  //Icon(Icons.login), Icon(Icons.person_add),
+  List<String>  titles=["Orders","Policy and rules","Term of Services","About Us"];
+  List<Icon> icons = [Icon(Icons.reorder),Icon(Icons.article_outlined), Icon(Icons.policy), Icon(Icons.info)];
   List<String> sarthar = [
-    "",
-    "",
     "",
     "ကျ‌နော်တို့ Company သည် 2018 မှ စတင်ပီး မြန်မာနိုင်ငံ တွင် Online Shop ကို လုပ်ခဲ့ပါသည်။ မြန်မာနိုင်ငံ ရှိ မည့်သည့် ‌‌နေရာ မှ မဆို ဝယ်ယူနိုင်သည့် အပြင် အိမ် အရောက် ပို့ဆောင်နိုင်ဖို့ စွမ်း‌‌ဆောင်ခဲ့ သည့်အတွက် ‌‌အောင်မြင်စွာ ရပ်တည် နိုင်ခဲ့ပါသည်။",
     "ကျနော်တို့ ကုမ္ပဏီ သည် မြန်မာနိုင်ငံ ရှိ ဘယ်နေရာ ၊ ဘယ်‌ဒေ ကမဆို အဆင်ပြေပြေ ဝယ်ယူ နိုင်ဖို့နှင့် မိတ်ဆွေ များ အားလုံး မိမိ အလို ရှိရာ ပစ္စည်း များကို တစ်‌နေရာတည်း မှာ စုစည်းပေး နိုင်ဖို့ကြိုးစားသွားပါမည်..",
@@ -56,6 +58,32 @@ class _SettingsState extends State<Settings> {
                     'https://images.pexels.com/photos/443356/pexels-photo-443356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
                     fit: BoxFit.cover,
                   )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => LogIn()));
+                    },
+                    child: ListTile(
+                      leading: Icon(Icons.login,color: CustomColors.blueGrey,),
+                      title: Text('LogIn'),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => SignUp()));
+                    },
+                    child: ListTile(
+                      leading: Icon(Icons.person_add,color: CustomColors.blueGrey,),
+                      title: Text('Register'),
+                    ),
+                  ),
+                ],
               ),
             ),
             SliverList(

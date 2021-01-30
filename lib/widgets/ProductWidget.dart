@@ -1,26 +1,29 @@
 import 'package:asxox/Screen/ProductDetail.dart';
+import 'package:asxox/models/ProductModel.dart';
 import 'package:asxox/theme/colors.dart';
+import 'package:asxox/utils/Global.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatelessWidget {
-  //toDelete
-  final String image;
 
   //Real Work
   final bool margin;
-  //Current Product Model
-  ProductWidget({this.image, this.margin,Key key}) : super(key: key);
+  final ProductModel product;
+  ProductWidget({this.product, this.margin,Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){
+        Global.curProduct = product;
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ProductDetail()
         ));
       },
       child: Container(
+        width: screenSize.width * 0.3,
+        height: screenSize.height,
         margin: margin == true ? EdgeInsets.only(
             right: 10.0
         ) : null,
@@ -34,7 +37,6 @@ class ProductWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: screenSize.width * 0.3,
               height: screenSize.height/6,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -49,22 +51,25 @@ class ProductWidget extends StatelessWidget {
                   ],
                   image: DecorationImage(
                       image:
-                      NetworkImage(image),
+                      NetworkImage(product.cover),
                       fit: BoxFit.cover)),
             ),
-            Text('Bicycle',
+            Text(product.title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
               style: TextStyle(
-                  color: CustomColors.deepOrange
+                  color: CustomColors.deepOrange,
+                  height: 1.5000000476837158,
               ),
             ),
-            Text('45,000 KS',
+            Text(Global.formatPrice(product.price),
               style: TextStyle(
                   color: CustomColors.grey,
                   fontSize: 12,
                   decoration: TextDecoration.lineThrough
               ),
             ),
-            Text('25,000 KS',
+            Text(Global.formatPrice(product.discount),
               style: TextStyle(
                   color: Colors.redAccent,
                   fontSize: 14,

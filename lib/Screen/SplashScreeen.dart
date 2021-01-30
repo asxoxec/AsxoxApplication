@@ -12,6 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _changePage() async{
     await ApiServices.fetchCategories();
+    await ApiServices.fetchProducts();
     Navigator.pushReplacementNamed(context, "/master");
   }
 

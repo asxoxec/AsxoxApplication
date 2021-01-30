@@ -233,31 +233,24 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate{
         // ),
         Positioned(
           top: expandedHeight / 0.9 - shrinkOffset,
-          child: Center(
-            child: Container(
-              height: 40.0,
-              width: MediaQuery.of(context).size.width * 0.95,
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white.withOpacity(0.7),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x3392a0b2),
-                    offset: Offset(0, 8),
-                    blurRadius: 15,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: SvgPicture.asset('assets/icons/search_icon.svg'),
-                  ),
-                  Text('What are you looking for?',style: TextStyle(color: Colors.grey),)
-                ],),
+          child: Container(
+            height: 40.0,
+            width: MediaQuery.of(context).size.width * 0.95,
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.only(right: 40.0),
+            alignment: Alignment.centerRight,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white.withOpacity(0.6),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x3392a0b2),
+                  offset: Offset(0, 8),
+                  blurRadius: 15,
+                ),
+              ],
             ),
+            child: Text('What are you looking for?',style: TextStyle(color: CustomColors.blueGrey),)
           ),)
       ],
     );
